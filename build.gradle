@@ -1,0 +1,132 @@
+plugins {
+	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+}
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = 'Modrinth'
+				url = 'https://api.modrinth.com/maven'
+			}
+		}
+		filter {
+			includeGroup 'maven.modrinth'
+		}
+	}
+	maven {
+		// owo-lib : le POM Modrinth ne tire pas endec. Jankson : embarqué dans LibZ.
+		name = 'wispforest'
+		url = 'https://maven.wispforest.io/releases'
+		content {
+			includeGroup 'io.wispforest'
+			includeGroup 'io.wispforest.endec'
+			includeGroup 'blue.endless'
+		}
+	}
+	maven {
+		// Custom Portal API : embarquée dans le jar de Deeper and Darker, absente de Modrinth.
+		name = 'kyrptonaught'
+		url = 'https://maven.kyrptonaught.dev'
+		content {
+			includeGroup 'net.kyrptonaught'
+		}
+	}
+	maven {
+		name = 'Ladysnake'
+		url = 'https://maven.ladysnake.org/releases'
+		content {
+			includeGroup 'org.ladysnake.cardinal-components-api'
+		}
+	}
+}
+
+fabricApi {
+	configureTests {
+		createSourceSet = true
+		modId = "tieredtrinkets-test"
+		enableGameTests = true
+		enableClientGameTests = false
+		eula = true
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings loom.officialMojangMappings()
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	modImplementation "maven.modrinth:trinkets:${project.trinkets_version}"
+	// Embarqués dans le jar de Trinkets, mais absents de son POM Modrinth.
+	modImplementation "org.ladysnake.cardinal-components-api:cardinal-components-base:${project.cca_version}"
+	modImplementation "org.ladysnake.cardinal-components-api:cardinal-components-entity:${project.cca_version}"
+	modImplementation "maven.modrinth:tieredz:${project.tieredz_version}"
+	modImplementation "maven.modrinth:libz:${project.libz_version}"
+	modLocalRuntime "maven.modrinth:cloth-config:${project.cloth_config_version}"
+	// Le chargeur ne lit pas les jars embarqués des dépendances de dev : ils sont ajoutés à part.
+	modLocalRuntime "blue.endless:jankson:1.2.3"
+
+	// Tests en jeu : les objets que visent les paliers doivent exister (bijoux, sacs à dos, Élytre des âmes).
+	modLocalRuntime "maven.modrinth:jewelry:${project.jewelry_version}"
+	modLocalRuntime "maven.modrinth:spell-power:${project.spell_power_version}"
+	modLocalRuntime "maven.modrinth:ranged-weapon-api:${project.ranged_weapon_api_version}"
+	modLocalRuntime "maven.modrinth:structure-pool-api:${project.structure_pool_api_version}"
+	modLocalRuntime "maven.modrinth:tiny-config:3.1.0-fabric"
+	modLocalRuntime "maven.modrinth:travelersbackpack:${project.travelersbackpack_version}"
+	modLocalRuntime "maven.modrinth:elytra-slot:${project.elytraslot_version}"
+	modLocalRuntime "maven.modrinth:deeperdarker:${project.deeperdarker_version}"
+	modLocalRuntime("net.kyrptonaught:customportalapi:${project.customportalapi_version}") {
+		transitive = false
+	}
+	modLocalRuntime("io.wispforest:owo-lib:${project.owo_version}") {
+		// Versions du serveur (fabric-api 0.116.17) plutôt que celles, plus vieilles, du POM d'owo.
+		exclude group: 'net.fabricmc'
+		exclude group: 'net.fabricmc.fabric-api'
+	}
+}
+
+// owo-lib (Deeper and Darker) demande l'EULA sur l'entrée standard si eula.txt manque, avant l'acceptation
+// automatique de Loom : la CI part d'un dossier de lancement vide.
+tasks.named("runGameTest") {
+	def runDir = file(loom.runConfigs.gameTest.runDir)
+	doFirst {
+		def eula = new File(runDir, "eula.txt")
+		if (!eula.exists()) {
+			runDir.mkdirs()
+			eula.text = "eula=true\n"
+		}
+	}
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+	it.options.encoding = "UTF-8"
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+	def name = project.archives_base_name
+	inputs.property "archivesName", name
+	from(file("LICENSE")) {
+		rename { "${it}_${name}" }
+	}
+}
