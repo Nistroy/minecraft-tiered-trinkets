@@ -1,6 +1,8 @@
 # minecraft-tiered-trinkets — instructions agents
 
-Mod Fabric 1.21.1, serveur seul (joueurs : rien, noms de palier via le pack de ressources du serveur). Serveur
+Mod Fabric 1.21.1, serveur + client (pack `side = both` depuis 2026-09-28 : l'infobulle Trinkets « porté comme… »
+passe par `TrinketModifiers.get` → affiche le palier ; TieredZ n'affiche pas les gabarits `BODY`). Noms de palier via
+le pack de ressources du serveur. Serveur
 `Nistroy/minecraft-server` (`MODS.md`). Public, GPL-3.0. Docs `.md` = notes denses pour agents, sauf `README.md`.
 
 ## But (demande nistroy 2026-09-28)
