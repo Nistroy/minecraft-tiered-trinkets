@@ -1,0 +1,11 @@
+{
+    "items": [
+        "jewelry:citrine_ring",
+        "jewelry:citrine_necklace",
+        "jewelry:netherite_citrine_ring",
+        "jewelry:netherite_citrine_necklace"
+    ],
+    "base": [
+        "jewelry:citrine"
+    ]
+}

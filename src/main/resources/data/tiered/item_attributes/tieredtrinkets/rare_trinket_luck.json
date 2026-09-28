@@ -1,0 +1,25 @@
+{
+    "id": "tiered:rare_trinket_luck",
+    "verifiers": [
+        {
+            "id": "jewelry:emerald_necklace"
+        }
+    ],
+    "weight": 15,
+    "style": {
+        "color": "blue"
+    },
+    "attributes": [
+        {
+            "type": "generic.luck",
+            "modifier": {
+                "name": "tiered:rare_trinket_luck",
+                "operation": "ADD_VALUE",
+                "amount": 0.5
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

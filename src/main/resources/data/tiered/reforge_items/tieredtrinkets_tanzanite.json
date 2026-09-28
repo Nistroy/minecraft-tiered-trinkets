@@ -1,0 +1,11 @@
+{
+    "items": [
+        "jewelry:tanzanite_ring",
+        "jewelry:tanzanite_necklace",
+        "jewelry:netherite_tanzanite_ring",
+        "jewelry:netherite_tanzanite_necklace"
+    ],
+    "base": [
+        "jewelry:tanzanite"
+    ]
+}

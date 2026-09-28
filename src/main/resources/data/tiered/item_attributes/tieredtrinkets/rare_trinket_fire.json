@@ -1,0 +1,28 @@
+{
+    "id": "tiered:rare_trinket_fire",
+    "verifiers": [
+        {
+            "id": "jewelry:unique_fire_ring"
+        },
+        {
+            "id": "jewelry:unique_fire_necklace"
+        }
+    ],
+    "weight": 15,
+    "style": {
+        "color": "blue"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:fire",
+            "modifier": {
+                "name": "tiered:rare_trinket_fire",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.05
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

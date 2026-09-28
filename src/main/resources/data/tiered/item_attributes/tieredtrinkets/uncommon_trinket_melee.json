@@ -1,0 +1,46 @@
+{
+    "id": "tiered:uncommon_trinket_melee",
+    "verifiers": [
+        {
+            "id": "jewelry:ruby_ring"
+        },
+        {
+            "id": "jewelry:ruby_necklace"
+        },
+        {
+            "id": "jewelry:netherite_ruby_ring"
+        },
+        {
+            "id": "jewelry:netherite_ruby_necklace"
+        },
+        {
+            "id": "jewelry:unique_attack_ring"
+        },
+        {
+            "id": "jewelry:unique_attack_necklace"
+        },
+        {
+            "id": "jewelry:unique_crit_ring"
+        },
+        {
+            "id": "jewelry:unique_crit_necklace"
+        }
+    ],
+    "weight": 35,
+    "style": {
+        "color": "dark_green"
+    },
+    "attributes": [
+        {
+            "type": "generic.attack_damage",
+            "modifier": {
+                "name": "tiered:uncommon_trinket_melee",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": -0.05
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

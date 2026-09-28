@@ -1,0 +1,25 @@
+{
+    "id": "tiered:common_trinket_backpack",
+    "verifiers": [
+        {
+            "tag": "trinkets:chest/back"
+        }
+    ],
+    "weight": 50,
+    "style": {
+        "color": "gray"
+    },
+    "attributes": [
+        {
+            "type": "generic.max_health",
+            "modifier": {
+                "name": "tiered:common_trinket_backpack",
+                "operation": "ADD_VALUE",
+                "amount": -1
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

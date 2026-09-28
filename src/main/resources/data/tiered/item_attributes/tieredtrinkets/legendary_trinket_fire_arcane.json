@@ -1,0 +1,56 @@
+{
+    "id": "tiered:legendary_trinket_fire_arcane",
+    "verifiers": [
+        {
+            "id": "jewelry:topaz_ring"
+        },
+        {
+            "id": "jewelry:topaz_necklace"
+        },
+        {
+            "id": "jewelry:netherite_topaz_ring"
+        },
+        {
+            "id": "jewelry:netherite_topaz_necklace"
+        }
+    ],
+    "weight": 3,
+    "style": {
+        "color": "gold"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:fire",
+            "modifier": {
+                "name": "tiered:legendary_trinket_fire_arcane",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.1
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        },
+        {
+            "type": "spell_power:arcane",
+            "modifier": {
+                "name": "tiered:legendary_trinket_fire_arcane",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.1
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        },
+        {
+            "type": "spell_power:critical_chance",
+            "modifier": {
+                "name": "tiered:legendary_trinket_fire_arcane",
+                "operation": "ADD_MULTIPLIED_BASE",
+                "amount": 0.075
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

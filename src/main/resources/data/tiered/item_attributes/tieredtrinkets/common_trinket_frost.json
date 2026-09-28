@@ -1,0 +1,28 @@
+{
+    "id": "tiered:common_trinket_frost",
+    "verifiers": [
+        {
+            "id": "jewelry:unique_frost_ring"
+        },
+        {
+            "id": "jewelry:unique_frost_necklace"
+        }
+    ],
+    "weight": 50,
+    "style": {
+        "color": "gray"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:frost",
+            "modifier": {
+                "name": "tiered:common_trinket_frost",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": -0.15
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

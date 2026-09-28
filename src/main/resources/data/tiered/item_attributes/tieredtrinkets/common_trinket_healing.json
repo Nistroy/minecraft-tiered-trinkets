@@ -1,0 +1,28 @@
+{
+    "id": "tiered:common_trinket_healing",
+    "verifiers": [
+        {
+            "id": "jewelry:unique_healing_ring"
+        },
+        {
+            "id": "jewelry:unique_healing_necklace"
+        }
+    ],
+    "weight": 50,
+    "style": {
+        "color": "gray"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:healing",
+            "modifier": {
+                "name": "tiered:common_trinket_healing",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": -0.15
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

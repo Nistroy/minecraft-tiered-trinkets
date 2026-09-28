@@ -1,0 +1,39 @@
+{
+    "id": "tiered:legendary_trinket_healing",
+    "verifiers": [
+        {
+            "id": "jewelry:unique_healing_ring"
+        },
+        {
+            "id": "jewelry:unique_healing_necklace"
+        }
+    ],
+    "weight": 3,
+    "style": {
+        "color": "gold"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:healing",
+            "modifier": {
+                "name": "tiered:legendary_trinket_healing",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.1
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        },
+        {
+            "type": "spell_power:critical_chance",
+            "modifier": {
+                "name": "tiered:legendary_trinket_healing",
+                "operation": "ADD_MULTIPLIED_BASE",
+                "amount": 0.075
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

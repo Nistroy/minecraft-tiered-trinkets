@@ -1,0 +1,56 @@
+{
+    "id": "tiered:legendary_trinket_frost_soul",
+    "verifiers": [
+        {
+            "id": "jewelry:tanzanite_ring"
+        },
+        {
+            "id": "jewelry:tanzanite_necklace"
+        },
+        {
+            "id": "jewelry:netherite_tanzanite_ring"
+        },
+        {
+            "id": "jewelry:netherite_tanzanite_necklace"
+        }
+    ],
+    "weight": 3,
+    "style": {
+        "color": "gold"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:frost",
+            "modifier": {
+                "name": "tiered:legendary_trinket_frost_soul",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.1
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        },
+        {
+            "type": "spell_power:soul",
+            "modifier": {
+                "name": "tiered:legendary_trinket_frost_soul",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.1
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        },
+        {
+            "type": "spell_power:critical_chance",
+            "modifier": {
+                "name": "tiered:legendary_trinket_frost_soul",
+                "operation": "ADD_MULTIPLIED_BASE",
+                "amount": 0.075
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

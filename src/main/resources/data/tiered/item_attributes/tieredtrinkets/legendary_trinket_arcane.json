@@ -1,0 +1,39 @@
+{
+    "id": "tiered:legendary_trinket_arcane",
+    "verifiers": [
+        {
+            "id": "jewelry:unique_arcane_ring"
+        },
+        {
+            "id": "jewelry:unique_arcane_necklace"
+        }
+    ],
+    "weight": 3,
+    "style": {
+        "color": "gold"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:arcane",
+            "modifier": {
+                "name": "tiered:legendary_trinket_arcane",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.1
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        },
+        {
+            "type": "spell_power:critical_chance",
+            "modifier": {
+                "name": "tiered:legendary_trinket_arcane",
+                "operation": "ADD_MULTIPLIED_BASE",
+                "amount": 0.075
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

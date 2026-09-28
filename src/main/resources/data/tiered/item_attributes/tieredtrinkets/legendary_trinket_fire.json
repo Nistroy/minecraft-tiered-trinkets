@@ -1,0 +1,39 @@
+{
+    "id": "tiered:legendary_trinket_fire",
+    "verifiers": [
+        {
+            "id": "jewelry:unique_fire_ring"
+        },
+        {
+            "id": "jewelry:unique_fire_necklace"
+        }
+    ],
+    "weight": 3,
+    "style": {
+        "color": "gold"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:fire",
+            "modifier": {
+                "name": "tiered:legendary_trinket_fire",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.1
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        },
+        {
+            "type": "spell_power:critical_chance",
+            "modifier": {
+                "name": "tiered:legendary_trinket_fire",
+                "operation": "ADD_MULTIPLIED_BASE",
+                "amount": 0.075
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

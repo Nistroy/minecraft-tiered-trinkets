@@ -1,0 +1,51 @@
+{
+    "id": "tiered:legendary_trinket_ranged",
+    "verifiers": [
+        {
+            "id": "jewelry:jade_ring"
+        },
+        {
+            "id": "jewelry:jade_necklace"
+        },
+        {
+            "id": "jewelry:netherite_jade_ring"
+        },
+        {
+            "id": "jewelry:netherite_jade_necklace"
+        },
+        {
+            "id": "jewelry:unique_archer_ring"
+        },
+        {
+            "id": "jewelry:unique_archer_necklace"
+        }
+    ],
+    "weight": 3,
+    "style": {
+        "color": "gold"
+    },
+    "attributes": [
+        {
+            "type": "ranged_weapon:damage",
+            "modifier": {
+                "name": "tiered:legendary_trinket_ranged",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.1
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        },
+        {
+            "type": "ranged_weapon:haste",
+            "modifier": {
+                "name": "tiered:legendary_trinket_ranged",
+                "operation": "ADD_MULTIPLIED_BASE",
+                "amount": 0.03
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

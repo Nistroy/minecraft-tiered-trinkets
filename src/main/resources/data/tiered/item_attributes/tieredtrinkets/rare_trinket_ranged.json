@@ -1,0 +1,40 @@
+{
+    "id": "tiered:rare_trinket_ranged",
+    "verifiers": [
+        {
+            "id": "jewelry:jade_ring"
+        },
+        {
+            "id": "jewelry:jade_necklace"
+        },
+        {
+            "id": "jewelry:netherite_jade_ring"
+        },
+        {
+            "id": "jewelry:netherite_jade_necklace"
+        },
+        {
+            "id": "jewelry:unique_archer_ring"
+        },
+        {
+            "id": "jewelry:unique_archer_necklace"
+        }
+    ],
+    "weight": 15,
+    "style": {
+        "color": "blue"
+    },
+    "attributes": [
+        {
+            "type": "ranged_weapon:damage",
+            "modifier": {
+                "name": "tiered:rare_trinket_ranged",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.05
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

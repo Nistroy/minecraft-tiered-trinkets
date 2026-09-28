@@ -1,0 +1,28 @@
+{
+    "id": "tiered:uncommon_trinket_spell",
+    "verifiers": [
+        {
+            "id": "jewelry:unique_spell_ring"
+        },
+        {
+            "id": "jewelry:unique_spell_necklace"
+        }
+    ],
+    "weight": 35,
+    "style": {
+        "color": "dark_green"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:generic",
+            "modifier": {
+                "name": "tiered:uncommon_trinket_spell",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": -0.05
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

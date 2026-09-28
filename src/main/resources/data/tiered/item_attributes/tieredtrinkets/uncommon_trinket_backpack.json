@@ -1,0 +1,25 @@
+{
+    "id": "tiered:uncommon_trinket_backpack",
+    "verifiers": [
+        {
+            "tag": "trinkets:chest/back"
+        }
+    ],
+    "weight": 35,
+    "style": {
+        "color": "dark_green"
+    },
+    "attributes": [
+        {
+            "type": "generic.armor",
+            "modifier": {
+                "name": "tiered:uncommon_trinket_backpack",
+                "operation": "ADD_VALUE",
+                "amount": 0.5
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

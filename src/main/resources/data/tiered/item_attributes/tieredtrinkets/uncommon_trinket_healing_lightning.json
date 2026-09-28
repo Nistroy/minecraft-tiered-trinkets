@@ -1,0 +1,45 @@
+{
+    "id": "tiered:uncommon_trinket_healing_lightning",
+    "verifiers": [
+        {
+            "id": "jewelry:citrine_ring"
+        },
+        {
+            "id": "jewelry:citrine_necklace"
+        },
+        {
+            "id": "jewelry:netherite_citrine_ring"
+        },
+        {
+            "id": "jewelry:netherite_citrine_necklace"
+        }
+    ],
+    "weight": 35,
+    "style": {
+        "color": "dark_green"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:healing",
+            "modifier": {
+                "name": "tiered:uncommon_trinket_healing_lightning",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": -0.05
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        },
+        {
+            "type": "spell_power:lightning",
+            "modifier": {
+                "name": "tiered:uncommon_trinket_healing_lightning",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": -0.05
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

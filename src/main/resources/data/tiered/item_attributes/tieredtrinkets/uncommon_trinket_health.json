@@ -1,0 +1,40 @@
+{
+    "id": "tiered:uncommon_trinket_health",
+    "verifiers": [
+        {
+            "id": "jewelry:sapphire_ring"
+        },
+        {
+            "id": "jewelry:sapphire_necklace"
+        },
+        {
+            "id": "jewelry:netherite_sapphire_ring"
+        },
+        {
+            "id": "jewelry:netherite_sapphire_necklace"
+        },
+        {
+            "id": "jewelry:unique_tank_ring"
+        },
+        {
+            "id": "jewelry:unique_tank_necklace"
+        }
+    ],
+    "weight": 35,
+    "style": {
+        "color": "dark_green"
+    },
+    "attributes": [
+        {
+            "type": "generic.max_health",
+            "modifier": {
+                "name": "tiered:uncommon_trinket_health",
+                "operation": "ADD_VALUE",
+                "amount": -1
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+{
+    "id": "tiered:rare_trinket_armor",
+    "verifiers": [
+        {
+            "id": "jewelry:iron_ring"
+        },
+        {
+            "id": "jewelry:copper_ring"
+        },
+        {
+            "id": "jewelry:gold_ring"
+        }
+    ],
+    "weight": 15,
+    "style": {
+        "color": "blue"
+    },
+    "attributes": [
+        {
+            "type": "generic.armor",
+            "modifier": {
+                "name": "tiered:rare_trinket_armor",
+                "operation": "ADD_VALUE",
+                "amount": 0.5
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

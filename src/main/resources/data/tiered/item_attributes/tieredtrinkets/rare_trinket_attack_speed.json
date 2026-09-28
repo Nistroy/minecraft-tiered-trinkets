@@ -1,0 +1,34 @@
+{
+    "id": "tiered:rare_trinket_attack_speed",
+    "verifiers": [
+        {
+            "id": "jewelry:diamond_ring"
+        },
+        {
+            "id": "jewelry:diamond_necklace"
+        },
+        {
+            "id": "jewelry:unique_dex_ring"
+        },
+        {
+            "id": "jewelry:unique_dex_necklace"
+        }
+    ],
+    "weight": 15,
+    "style": {
+        "color": "blue"
+    },
+    "attributes": [
+        {
+            "type": "generic.attack_speed",
+            "modifier": {
+                "name": "tiered:rare_trinket_attack_speed",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.05
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

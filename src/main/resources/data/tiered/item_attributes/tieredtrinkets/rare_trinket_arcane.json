@@ -1,0 +1,28 @@
+{
+    "id": "tiered:rare_trinket_arcane",
+    "verifiers": [
+        {
+            "id": "jewelry:unique_arcane_ring"
+        },
+        {
+            "id": "jewelry:unique_arcane_necklace"
+        }
+    ],
+    "weight": 15,
+    "style": {
+        "color": "blue"
+    },
+    "attributes": [
+        {
+            "type": "spell_power:arcane",
+            "modifier": {
+                "name": "tiered:rare_trinket_arcane",
+                "operation": "ADD_MULTIPLIED_TOTAL",
+                "amount": 0.05
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}
