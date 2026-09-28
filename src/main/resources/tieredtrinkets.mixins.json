@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "io.github.nistroy.tieredtrinkets.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"TrinketModifiersMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

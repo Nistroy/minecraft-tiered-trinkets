@@ -1,0 +1,25 @@
+{
+    "id": "tieredtrinkets_test:hand_only",
+    "verifiers": [
+        {
+            "id": "minecraft:stick"
+        }
+    ],
+    "weight": 0,
+    "style": {
+        "color": "gray"
+    },
+    "attributes": [
+        {
+            "type": "generic.luck",
+            "modifier": {
+                "name": "tieredtrinkets_test:hand_only",
+                "operation": "ADD_VALUE",
+                "amount": 5
+            },
+            "optional_equipment_slots": [
+                "MAINHAND"
+            ]
+        }
+    ]
+}

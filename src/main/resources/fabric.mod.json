@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "tieredtrinkets",
+	"version": "${version}",
+	"name": "Paliers TieredZ dans les emplacements Trinkets",
+	"description": "Les paliers de TieredZ (Commun à Unique) comptent aussi pour les objets portés dans les emplacements Trinkets : bijoux, sac à dos, élytre. Ajoute les paliers des bijoux (Jewelry), des sacs à dos (Traveler's Backpack) et de l'Élytre des âmes (Deeper and Darker).",
+	"authors": [
+		"nistroy"
+	],
+	"contact": {
+		"sources": "https://github.com/Nistroy/minecraft-tiered-trinkets",
+		"issues": "https://github.com/Nistroy/minecraft-tiered-trinkets/issues"
+	},
+	"license": "GPL-3.0-only",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.nistroy.tieredtrinkets.TieredTrinkets"
+		]
+	},
+	"mixins": [
+		"tieredtrinkets.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*",
+		"trinkets": ">=3.10.0",
+		"tiered": ">=1.3.7"
+	}
+}
