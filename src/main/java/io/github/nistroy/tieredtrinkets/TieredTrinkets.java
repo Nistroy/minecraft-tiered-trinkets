@@ -1,6 +1,7 @@
 package io.github.nistroy.tieredtrinkets;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 
 public final class TieredTrinkets implements ModInitializer {
 	@Override
@@ -11,6 +12,10 @@ public final class TieredTrinkets implements ModInitializer {
 			Class.forName("dev.emi.trinkets.TrinketModifiers");
 		} catch (ClassNotFoundException e) {
 			throw new IllegalStateException("Trinkets sans TrinketModifiers : version non prise en charge", e);
+		}
+		// Accessories n'est là qu'avec Aether.
+		if (FabricLoader.getInstance().isModLoaded("accessories")) {
+			AccessoriesTiers.register();
 		}
 	}
 }

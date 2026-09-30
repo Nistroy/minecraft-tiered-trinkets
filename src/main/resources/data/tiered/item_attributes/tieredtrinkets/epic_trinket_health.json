@@ -18,6 +18,9 @@
         },
         {
             "id": "jewelry:unique_tank_necklace"
+        },
+        {
+            "id": "aether:regeneration_stone"
         }
     ],
     "weight": 8,

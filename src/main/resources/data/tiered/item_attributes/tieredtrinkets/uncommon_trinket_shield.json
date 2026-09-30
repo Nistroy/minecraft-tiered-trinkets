@@ -1,0 +1,25 @@
+{
+    "id": "tiered:uncommon_trinket_shield",
+    "verifiers": [
+        {
+            "id": "aether:shield_of_repulsion"
+        }
+    ],
+    "weight": 35,
+    "style": {
+        "color": "dark_green"
+    },
+    "attributes": [
+        {
+            "type": "generic.armor",
+            "modifier": {
+                "name": "tiered:uncommon_trinket_shield",
+                "operation": "ADD_VALUE",
+                "amount": 0.5
+            },
+            "optional_equipment_slots": [
+                "BODY"
+            ]
+        }
+    ]
+}

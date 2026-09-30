@@ -1,0 +1,9 @@
+{
+    "items": [
+        "aether:shield_of_repulsion",
+        "aether:regeneration_stone"
+    ],
+    "base": [
+        "aether:zanite_gemstone"
+    ]
+}

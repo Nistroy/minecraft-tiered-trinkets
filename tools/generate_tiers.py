@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Génère les paliers TieredZ des bijoux, sacs à dos et Élytre des âmes, et leurs noms pour le pack de ressources.
+"""Génère les paliers TieredZ des bijoux, sacs à dos, Élytre des âmes et accessoires d'Aether, et leurs noms pour le
+pack de ressources.
 
 Usage : tools/generate_tiers.py <tiered-1.3.7.jar>
 Écrit src/main/resources/data/tiered/ et lang/en_us.json (à copier dans le pack de ressources du serveur :
@@ -26,7 +27,7 @@ LABEL = {"common": "Common", "uncommon": "Uncommon", "rare": "Rare", "epic": "Ep
          "legendary": "Legendary", "unique": "Unique"}
 
 # Emplacement jamais porté par un joueur : TieredZ n'applique pas ces bonus en main, le mod les applique
-# dans les emplacements Trinkets.
+# dans les emplacements Trinkets et Accessories.
 WORN = ["BODY"]
 
 # Bijoux : moitié des paliers d'arme. Bonus principal (le thème du bijou) puis bonus secondaire dès Épique.
@@ -81,7 +82,8 @@ def unique(*names):
 JEWELS = {
     "luck": ["jewelry:emerald_necklace"],
     "armor": ["jewelry:iron_ring", "jewelry:copper_ring", "jewelry:gold_ring"],
-    "health": both("sapphire") + unique("tank"),
+    # Pierre de régénération d'Aether (emplacement divers ×2 d'Accessories) : thème santé (nistroy 2026-09-30).
+    "health": both("sapphire") + unique("tank") + ["aether:regeneration_stone"],
     "melee": both("ruby") + unique("attack", "crit"),
     "attack_speed": ["jewelry:diamond_ring", "jewelry:diamond_necklace"] + unique("dex"),
     "ranged": both("jade") + unique("archer"),
@@ -107,6 +109,8 @@ BACKPACK = {
                ("generic.max_health", "ADD_VALUE", 3)],
 }
 BACKPACK_TAG = "trinkets:chest/back"
+# Bouclier de répulsion d'Aether (emplacement bouclier d'Accessories) : mêmes paliers que les sacs (nistroy 2026-09-30).
+SHIELD = "aether:shield_of_repulsion"
 
 # Matériau posé à côté de l'objet au reforgeage (sinon TieredZ demande du silex).
 REFORGE_BASE = {
@@ -124,6 +128,7 @@ REFORGE_BASE = {
     "jewelry:tanzanite": both("tanzanite"),
     "jewelry:citrine": both("citrine"),
     "minecraft:phantom_membrane": ["deeperdarker:soul_elytra"],
+    "aether:zanite_gemstone": [SHIELD, "aether:regeneration_stone"],
 }
 
 
@@ -156,12 +161,11 @@ def jewel_tiers(labels):
             labels[f"{tier_id}.label"] = LABEL[tier]
 
 
-def backpack_tiers(labels):
+def half_armor_tiers(name, verifiers, labels):
     for tier in TIER_ORDER:
-        tier_id = f"tiered:{tier}_trinket_backpack"
+        tier_id = f"tiered:{tier}_trinket_{name}"
         attributes = [attribute(tier_id, kind, op, amount, WORN) for kind, op, amount in BACKPACK[tier]]
-        write(TIERS / f"{tier}_trinket_backpack.json",
-              tier_file(tier_id, tier, [{"tag": BACKPACK_TAG}], attributes))
+        write(TIERS / f"{tier}_trinket_{name}.json", tier_file(tier_id, tier, verifiers, attributes))
         labels[f"{tier_id}.label"] = LABEL[tier]
 
 
@@ -204,7 +208,8 @@ def main():
         old.unlink()
     labels = {}
     jewel_tiers(labels)
-    backpack_tiers(labels)
+    half_armor_tiers("backpack", [{"tag": BACKPACK_TAG}], labels)
+    half_armor_tiers("shield", [{"id": SHIELD}], labels)
     soul_elytra_tiers(sys.argv[1], labels)
     reforge_items()
     write(LANG, dict(sorted(labels.items())))

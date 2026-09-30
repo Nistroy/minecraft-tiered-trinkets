@@ -51,6 +51,28 @@ public class TierDataGameTest implements FabricGameTest {
 	}
 
 	@GameTest(template = EMPTY_STRUCTURE)
+	public void shieldOfRepulsionIsReforgeable(GameTestHelper helper) {
+		assertReforgeable(helper, List.of(TieredTrinketsGameTest.item("aether:shield_of_repulsion")), "_trinket_shield");
+		helper.succeed();
+	}
+
+	@GameTest(template = EMPTY_STRUCTURE)
+	public void regenerationStoneIsReforgeable(GameTestHelper helper) {
+		assertReforgeable(helper, List.of(TieredTrinketsGameTest.item("aether:regeneration_stone")), "_trinket_health");
+		helper.succeed();
+	}
+
+	@GameTest(template = EMPTY_STRUCTURE)
+	public void aetherAccessoriesReforgeWithZanite(GameTestHelper helper) {
+		Item zanite = TieredTrinketsGameTest.item("aether:zanite_gemstone");
+		for (String id : List.of("aether:shield_of_repulsion", "aether:regeneration_stone")) {
+			List<Item> base = Tiered.REFORGE_DATA_LOADER.getReforgeBaseItems(TieredTrinketsGameTest.item(id));
+			helper.assertTrue(base.equals(List.of(zanite)), "matériau de " + id + " : " + base);
+		}
+		helper.succeed();
+	}
+
+	@GameTest(template = EMPTY_STRUCTURE)
 	public void emeraldNecklaceReforgesWithAnEmerald(GameTestHelper helper) {
 		List<Item> base = Tiered.REFORGE_DATA_LOADER.getReforgeBaseItems(
 				TieredTrinketsGameTest.item("jewelry:emerald_necklace"));
