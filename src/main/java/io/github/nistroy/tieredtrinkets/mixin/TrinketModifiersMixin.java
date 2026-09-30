@@ -5,8 +5,9 @@ import com.google.common.collect.Multimap;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.emi.trinkets.TrinketModifiers;
+import dev.emi.trinkets.api.SlotAttributes;
 import dev.emi.trinkets.api.SlotReference;
-import io.github.nistroy.tieredtrinkets.TrinketTierModifiers;
+import io.github.nistroy.tieredtrinkets.WornTierModifiers;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -27,7 +28,7 @@ abstract class TrinketModifiersMixin {
 			@Local(argsOnly = true) ItemStack stack, @Local(argsOnly = true) SlotReference slot) {
 		// La map rendue par Trinket#getModifiers peut être immuable selon l'objet.
 		Multimap<Holder<Attribute>, AttributeModifier> withTier = LinkedHashMultimap.create(modifiers);
-		TrinketTierModifiers.addTo(withTier, stack, slot);
+		WornTierModifiers.forEach(stack, SlotAttributes.getIdentifier(slot), withTier::put);
 		return withTier;
 	}
 }

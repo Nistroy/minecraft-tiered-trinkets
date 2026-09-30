@@ -1,8 +1,5 @@
 package io.github.nistroy.tieredtrinkets;
 
-import com.google.common.collect.Multimap;
-import dev.emi.trinkets.api.SlotAttributes;
-import dev.emi.trinkets.api.SlotReference;
 import draylar.tiered.Tiered;
 import draylar.tiered.api.AttributeTemplate;
 import draylar.tiered.api.ModifierUtils;
@@ -17,23 +14,26 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.BiConsumer;
 
-/** Bonus du palier TieredZ d'un objet porté dans un emplacement Trinkets. */
-public final class TrinketTierModifiers {
+/** Bonus du palier TieredZ d'un objet porté dans un emplacement Trinkets ou Accessories. */
+public final class WornTierModifiers {
 	public static final String MOD_ID = "tieredtrinkets";
 
 	/**
-	 * TieredZ n'applique un palier qu'aux emplacements vanilla qu'il liste. Dans un emplacement Trinkets, on garde
+	 * TieredZ n'applique un palier qu'aux emplacements vanilla qu'il liste. Hors emplacement vanilla, on garde
 	 * les bonus prévus pour le torse (élytre, portée au torse ou dans l'emplacement cape) et pour le corps : c'est
-	 * l'emplacement des paliers de bijoux et de sacs, qu'aucun joueur ne porte, donc jamais appliqué en main.
+	 * l'emplacement des paliers de bijoux, de sacs et d'accessoires d'Aether, qu'aucun joueur ne porte, donc jamais
+	 * appliqué en main.
 	 */
 	private static final Set<EquipmentSlot> WORN_AS = Set.of(EquipmentSlot.CHEST, EquipmentSlot.BODY);
 
-	private TrinketTierModifiers() {
+	private WornTierModifiers() {
 	}
 
-	public static void addTo(Multimap<Holder<Attribute>, AttributeModifier> modifiers, ItemStack stack,
-			SlotReference slot) {
+	/** {@code slotId} identifie l'emplacement : il entre dans l'id des bonus. */
+	public static void forEach(ItemStack stack, ResourceLocation slotId,
+			BiConsumer<Holder<Attribute>, AttributeModifier> sink) {
 		ResourceLocation tierId = ModifierUtils.getAttributeId(stack);
 		if (tierId == null) {
 			return;
@@ -42,20 +42,19 @@ public final class TrinketTierModifiers {
 		if (tier == null) {
 			return;
 		}
-		ResourceLocation slotId = SlotAttributes.getIdentifier(slot);
 		List<AttributeTemplate> templates = tier.getAttributes();
 		for (int i = 0; i < templates.size(); i++) {
 			AttributeTemplate template = templates.get(i);
-			if (!isWornInTrinketSlot(template)) {
+			if (!isWornOutsideVanillaSlots(template)) {
 				continue;
 			}
 			int index = i;
 			BuiltInRegistries.ATTRIBUTE.getHolder(ResourceLocation.parse(template.getAttributeTypeID()))
-					.ifPresent(attribute -> modifiers.put(attribute, forSlot(template, slotId, index)));
+					.ifPresent(attribute -> sink.accept(attribute, forSlot(template, slotId, index)));
 		}
 	}
 
-	private static boolean isWornInTrinketSlot(AttributeTemplate template) {
+	private static boolean isWornOutsideVanillaSlots(AttributeTemplate template) {
 		return lists(template.getRequiredEquipmentSlots()) || lists(template.getOptionalEquipmentSlots());
 	}
 
