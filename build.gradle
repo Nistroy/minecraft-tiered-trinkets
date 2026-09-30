@@ -45,6 +45,12 @@ repositories {
 	}
 }
 
+configurations {
+	aetherJar {
+		transitive = false
+	}
+}
+
 fabricApi {
 	configureTests {
 		createSourceSet = true
@@ -67,6 +73,11 @@ dependencies {
 	modImplementation "org.ladysnake.cardinal-components-api:cardinal-components-entity:${project.cca_version}"
 	modImplementation "maven.modrinth:tieredz:${project.tieredz_version}"
 	modImplementation "maven.modrinth:libz:${project.libz_version}"
+	// Facultatif en jeu (embarqué par Aether) : l'emplacement bouclier d'Aether est un emplacement Accessories.
+	modImplementation("io.wispforest:accessories-fabric:${project.accessories_version}") {
+		exclude group: 'net.fabricmc'
+		exclude group: 'net.fabricmc.fabric-api'
+	}
 	modLocalRuntime "maven.modrinth:cloth-config:${project.cloth_config_version}"
 	// Le chargeur ne lit pas les jars embarqués des dépendances de dev : ils sont ajoutés à part.
 	modLocalRuntime "blue.endless:jankson:1.2.3"
@@ -83,11 +94,33 @@ dependencies {
 	modLocalRuntime("net.kyrptonaught:customportalapi:${project.customportalapi_version}") {
 		transitive = false
 	}
+	modLocalRuntime "maven.modrinth:aether:${project.aether_version}"
+	aetherJar "maven.modrinth:aether:${project.aether_version}"
+	// Cumulus, Nitrogen, Manningham Mills, Forge Config API Port : embarqués par Aether, pas tous sur Modrinth.
+	// Accessories vient du Maven wispforest ; MixinExtras est fourni par le chargeur.
+	modLocalRuntime fileTree(dir: aetherNestedJars(), include: '*.jar', excludes: ['accessories-*.jar', 'mixinextras-*.jar'])
+	// night-config : embarqué par Forge Config API Port.
+	localRuntime "com.electronwill.night-config:core:3.8.0"
+	localRuntime "com.electronwill.night-config:toml:3.8.0"
 	modLocalRuntime("io.wispforest:owo-lib:${project.owo_version}") {
 		// Versions du serveur (fabric-api 0.116.17) plutôt que celles, plus vieilles, du POM d'owo.
 		exclude group: 'net.fabricmc'
 		exclude group: 'net.fabricmc.fabric-api'
 	}
+}
+
+// Jars embarqués d'Aether, extraits à la configuration : Loom doit les voir pour les remapper.
+def aetherNestedJars() {
+	def dir = layout.buildDirectory.dir("aether-nested").get().asFile
+	copy {
+		from(zipTree(configurations.aetherJar.singleFile)) {
+			include 'META-INF/jars/*.jar'
+			eachFile { it.path = it.name }
+		}
+		includeEmptyDirs = false
+		into dir
+	}
+	return dir
 }
 
 // owo-lib (Deeper and Darker) demande l'EULA sur l'entrée standard si eula.txt manque, avant l'acceptation

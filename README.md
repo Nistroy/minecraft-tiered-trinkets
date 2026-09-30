@@ -10,7 +10,9 @@ Ce mod les fait compter, et ajoute des paliers pour :
 - les **bijoux** (Jewelry) : chaque bijou renforce son thème (rubis = dégâts, topaze = feu et arcane,
   saphir = cœurs, émeraude = Chance…), à moitié de la force d'un palier d'arme ;
 - les **sacs à dos** (Traveler's Backpack) : armure, ténacité et cœurs, à moitié d'un palier d'armure ;
-- l'**Élytre des âmes** (Deeper and Darker) : mêmes paliers que l'élytre vanilla.
+- l'**Élytre des âmes** (Deeper and Darker) : mêmes paliers que l'élytre vanilla ;
+- le **Bouclier de répulsion** (Aether) : mêmes paliers que les sacs à dos ;
+- la **Pierre de régénération** (Aether) : cœurs, comme le saphir. Deux pierres portées = deux bonus.
 
 | Palier | Topaze (exemple) | Collier d'émeraude | Sac à dos |
 | --- | --- | --- | --- |
@@ -19,13 +21,14 @@ Ce mod les fait compter, et ajoute des paliers pour :
 | Unique | +15 % feu et arcane, +10 % critique de sort | +2 Chance | +2 armure, +1 ténacité, +1,5 cœur |
 
 - Les bonus s'appliquent grâce au serveur. Installé aussi chez les joueurs (pack du serveur), le mod affiche
-  les bonus du palier dans l'infobulle « Quand porté comme… » de Trinkets. Les noms des paliers sont fournis
+  les bonus du palier dans l'infobulle « Quand porté comme… » de Trinkets et dans celle d'Accessories. Les noms des paliers sont fournis
   par le pack de ressources du serveur.
 - Reforgeage : onglet « Reforger » de l'enclume, 1 éclat d'améthyste + le matériau du bijou (sa pierre, un
   lingot pour les anneaux simples, un diamant pour les bijoux uniques), du cuir pour un sac, une membrane de
-  phantom pour l'Élytre des âmes.
+  phantom pour l'Élytre des âmes, une gemme de zanite pour le bouclier et la pierre d'Aether.
 
-Dépend de Trinkets `3.10.0` et de TieredZ `1.3.7`.
+Dépend de Trinkets `3.10.0` et de TieredZ `1.3.7`. Les accessoires d'Aether passent par Accessories,
+embarqué par Aether (facultatif).
 
 ## Construire
 

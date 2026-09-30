@@ -7,7 +7,8 @@
 	"entrypoints": {
 		"fabric-gametest": [
 			"io.github.nistroy.tieredtrinkets.test.TieredTrinketsGameTest",
-			"io.github.nistroy.tieredtrinkets.test.TierDataGameTest"
+			"io.github.nistroy.tieredtrinkets.test.TierDataGameTest",
+			"io.github.nistroy.tieredtrinkets.test.AccessoriesTierGameTest"
 		]
 	},
 	"depends": {
